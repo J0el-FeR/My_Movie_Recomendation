@@ -21,29 +21,29 @@
 </nav>
 
 <button
-    class="mobile-menu-button"
-    id="mobile-menu-button"
-    type="button"
-    aria-label="Open Navegation Menu"
-    aria-controls="mobile-menu"
-    >
+        class="mobile-menu-button"
+        id="mobile-menu-button"
+        type="button"
+        aria-label="Open Navegation Menu"
+        aria-controls="mobile-menu"
+>
 
     &times;
 
-<span></span>
-<span></span>
-<span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 
 </button>
 
 <dialog class="mobile-menu" id="mobile-menu">
 
     <button
-        class="mobile-menu-close"
-        id="mobile-menu-close"
-        type="button"
-        aria-label="Close Navegation Menu"
-        >
+            class="mobile-menu-close"
+            id="mobile-menu-close"
+            type="button"
+            aria-label="Close Navegation Menu"
+    >
 
         &times;
     </button>
@@ -79,36 +79,28 @@
 
     </section>
 
-
     <section class="recommendations" id="recommendations">
 
-        <h2>Movie Recommendations</h2>
-
-        <div class="carousel">
-            <div class="carousel-track" id="recommendations-track">
-
+        <section class="carousel" id="carousel" aria-label="Movie Recommendations" hidden>
+            <h2 class="carousel-title">My Movie Recommendations</h2>
+            <div class="carousel-window">
+                <div class="carousel-track" id="carousel-track"></div>
             </div>
-        </div>
+        </section>
 
     </section>
 
     <section class="mystery" id="mystery">
 
         <h2>Mystery Recommendation</h2>
-
         <div class="curtains">
             <div class="curtain curtain-left"></div>
             <div class="curtain curtain-right"></div>
         </div>
-
         <button class="mystery-reveal" id="mystery-reveal" type="button">
             Surprise Me!
         </button>
-
-        <div class="mystery-result" id="mystery-result">
-
-        </div>
-
+        <div class="mystery-result" id="mystery-result"></div>
         <button class="mystery-another" id="mystery-another" type="button">
             Another One!
         </button>
@@ -133,7 +125,6 @@
         <p class="no-results" id="no-results" hidden>No movies found.</p>
 
     </section>
-
 </main>
 
 <dialog class="popup" id="popup">
