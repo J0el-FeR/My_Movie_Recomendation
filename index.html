@@ -2,18 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-
-    <section class="hero">
-        <img src="Files/Picture.jpg" alt="My Picture">
-        <title>My Name</title>
-        <h1>And this is one of my Hobby`s</h1>
-        <h1>Movies!</h1>
-    </section>
+    <script src="script.js" defer></script>
 
 </head>
 
 <body>
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+    <a href="#heroSection" class="nav-link">Hero Section</a>
+    <a href="#recommendations" class="nav-link">Recommendations</a>
+    <a href="#mystery" class="nav-link">Mystery</a>
+    <a href="#collection" class="nav-link">Collection</a>
+    <a href="#footer" class="nav-link">End</a>
+
+</nav>
+
+<section class="hero" id="heroSection">
+
+    <div class="hero-picture">
+        <img src="Files/Picture.png" alt="My Picture">
+    </div>
+
+    <div class="hero-text">
+        <h1>My Name</h1>
+        <p>And this is one of my Hobby`s</p>
+        <h2>Movies!</h2>
+    </div>
+
+</section>
+
+
+<section class="recommendations" id="recommendations">
+
+    <h2>Movie Recommendations</h2>
+
+    <div class="carousel">
+        <div class="carousel-track" id="recommendations-track">
+
+        </div>
+    </div>
+
+</section>
+
+<section class="mystery" id="mystery">
+
+    <h2>Mystery Recommendation</h2>
+
+    <div class="curtains">
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+    </div>
+
+    <button class="mystery-reveal" id="mystery-reveal" type="button">
+        Surprise Me!
+    </button>
+
+    <div class="mystery-result" id="mystery-result">
+
+    </div>
+
+    <button class="mystery-another" id="mystery-another" type="button">
+        Another One!
+    </button>
+
+</section>
+
+<section class="collection" id="collection">
+
+    <h2>My Watched Movies</h2>
+
+    <div class="collection-search">
+        <input
+                type="search"
+                id="movie-search"
+                placeholder="Find something you like"
+                aria-label="Search watched movies"
+        >
+    </div>
+
+    <div class="movie-grid" id="movie-grid">
+    </div>
+    <p class="no-results" id="no-results" hidden>No movies found.</p>
+
+</section>
 
 <main class="recomendation" id="recomendation">
     <dialog class="popup" id="popup">
@@ -27,6 +101,13 @@
         </div>
     </dialog>
 </main>
+
+<footer id="footer">
+
+    <p>I hope you enjoy the movie the same way I did</p>
+    <h2>Thank you!!!</h2>
+
+</footer>
 
 </body>
 </html>
