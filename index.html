@@ -93,12 +93,20 @@
 
 </main>
 
-<dialog class="popup" id="popup">
+<dialog class="popup" id="popup" >
     <button class="popup-close" type="button"></button>
     <div class="popup-box">
-        <img class="popup-img" alt="Movie Poster">
+        <div class="popup-media">
+            <img class="popup-img" alt="Movie Poster">
+        </div>
         <div class="popup-body">
+            <div class="popup-heading">
             <h2 class="popup-title" id="popup-title"></h2>
+                <a class="popup-rating" target="_blank" rel="noopener noreferrer" title="Open on IMDb" hidden>
+                    <img class="rating-icon" alt="IMDb">
+                    <span class="rating-value"></span>
+                </a>
+            </div>
             <p class="popup-text"></p>
         </div>
     </div>
