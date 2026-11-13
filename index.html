@@ -65,7 +65,10 @@
     <section class="hero" id="heroSection">
 
         <div class="hero-picture">
-            <img src="Files/Picture.png" alt="My Picture">
+            <picture>
+                <source media="(max-width: 768px)" srcset="Files/Picture-mobile.png">
+                <img src="Files/Picture.png" alt="My Picture">
+            </picture>
         </div>
 
         <div class="hero-text">
