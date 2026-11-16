@@ -65,3 +65,6 @@ body {
 @keyframes fade-in {from {opacity: 0} }
 @keyframes fade-out {to {opacity: 0} }
 
+body:has(dialog[open]) {
+    overflow: hidden;
+}
