@@ -25,6 +25,7 @@ body {
     background: var(--glass-fill);
     color: var(--text);
     overflow: hidden;
+
     -webkit-backdrop-filter: blur(28px) saturate(160%) brightness(.85);
     backdrop-filter: blur(28px) saturate(160%) brightness(.85);
 
@@ -34,3 +35,33 @@ body {
     inset 0 -1px 1px rgb(255 255 255 / .08),
     inset 0 0 24px rgb(255 255 255 / .05);
 }
+
+.popup::backdrop {
+    content:"";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    background :
+    radial-gradient(120% 70% at 8% 0%, rgb(255 255 255 / .22), transparent 55%),
+    linear-gradient(to bottom, rgb(255 255 255 / .08), transparent 25%);
+}
+
+.popup[open] {animation: pop-in var(--duration) ease-out;}
+.popup[open] ::backdrop {animation: fade-in var(--duration) ease-out;}
+
+.popup.is-closing {animation: pop-out var(--duration) ease-in forwards;}
+.popup.is-closing ::backdrop {animation: fade-out var(--duration) ease-in forwards;}
+
+.popup::backdrop {
+    background: rgb(5 6 15/ .45);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes pop-in {from {opacity: 0; scale: .96} }
+@keyframes pop-out {to {opacity: 0; scale: .96} }
+@keyframes fade-in {from {opacity: 0} }
+@keyframes fade-out {to {opacity: 0} }
+
