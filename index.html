@@ -5,19 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
-
 </head>
 
 <body>
-
 <nav class="side-navigation" aria-label="Main navigation">
-
-    <a href="#heroSection" class="nav-link">Hero Section</a>
+    <a href="#heroSection" class="nav-link">Introduction</a>
     <a href="#recommendations" class="nav-link">Recommendations</a>
     <a href="#mystery" class="nav-link">Mystery</a>
     <a href="#collection" class="nav-link">Collection</a>
     <a href="#footer" class="nav-link">End</a>
-
 </nav>
 
 <button
@@ -47,14 +43,13 @@
 
     <nav aria-label="Mobile navigation">
 
-        <a href="#heroSection" class="nav-link">Hero Section</a>
+        <a href="#heroSection" class="nav-link">Introduction</a>
         <a href="#recommendations" class="nav-link">Recommendations</a>
         <a href="#mystery" class="nav-link">Mystery</a>
         <a href="#collection" class="nav-link">Collection</a>
         <a href="#footer" class="nav-link">End</a>
 
     </nav>
-
 </dialog>
 
 <main>
@@ -80,34 +75,41 @@
 
         <section class="carousel" id="carousel" aria-label="Movie Recommendations" hidden>
             <h2 class="carousel-title">My Movie Recommendations</h2>
-            <div class="carousel-window">
-                <div class="carousel-track" id="carousel-track"></div>
+            <div class="carousel-stage">
+                <div class="carousel-window">
+                    <div class="carousel-track" id="carousel-track"></div>
+                </div>
+
+                <button class="carousel-btn carousel-btn-prev"
+                        type="button"
+                        aria-label="Previous posters"
+                ></button>
+                <button
+                        class="carousel-btn carousel-btn-next"
+                        type="button"
+                        aria-label="Next posters"
+                ></button>
             </div>
         </section>
-
     </section>
 
     <section class="mystery" id="mystery">
-
         <h2>Mystery Recommendation</h2>
         <div class="curtains">
             <div class="curtain curtain-left"></div>
             <div class="curtain curtain-right"></div>
         </div>
         <button class="mystery-reveal" id="mystery-reveal" type="button">
-            Surprise Me!
+            Find something new!
         </button>
         <div class="mystery-result" id="mystery-result"></div>
         <button class="mystery-another" id="mystery-another" type="button">
-            Another One!
+            Try again!
         </button>
-
     </section>
 
     <section class="collection" id="collection">
-
         <h2>My Watched Movies</h2>
-
         <div class="collection-search">
             <input
                     type="search"
@@ -116,11 +118,9 @@
                     aria-label="Search watched movies"
             >
         </div>
-
         <div class="movie-grid" id="movie-grid">
         </div>
         <p class="no-results" id="no-results" hidden>No movies found.</p>
-
     </section>
 </main>
 
@@ -144,10 +144,8 @@
 </dialog>
 
 <footer id="footer">
-
     <p>I hope you enjoy the movie the same way I did</p>
     <h2>Thank you!!!</h2>
-
 </footer>
 
 </body>
