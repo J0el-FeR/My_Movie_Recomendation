@@ -29,30 +29,38 @@ body {
     -webkit-backdrop-filter: blur(28px) saturate(160%) brightness(.85);
     backdrop-filter: blur(28px) saturate(160%) brightness(.85);
 
-    box-shadow:
-    0 24px 60px rgb(0 0 0 / .55),
+    box-shadow: 0 24px 60px rgb(0 0 0 / .55),
     inset 0 1px 1px rgb(255 255 255 / .35),
     inset 0 -1px 1px rgb(255 255 255 / .08),
     inset 0 0 24px rgb(255 255 255 / .05);
 }
 
 .popup::backdrop {
-    content:"";
+    content: "";
     position: absolute;
     inset: 0;
     z-index: 2;
     pointer-events: none;
     border-radius: inherit;
-    background :
-    radial-gradient(120% 70% at 8% 0%, rgb(255 255 255 / .22), transparent 55%),
+    background: radial-gradient(120% 70% at 8% 0%, rgb(255 255 255 / .22), transparent 55%),
     linear-gradient(to bottom, rgb(255 255 255 / .08), transparent 25%);
 }
 
-.popup[open] {animation: pop-in var(--duration) ease-out;}
-.popup[open] ::backdrop {animation: fade-in var(--duration) ease-out;}
+.popup[open] {
+    animation: pop-in var(--duration) ease-out;
+}
 
-.popup.is-closing {animation: pop-out var(--duration) ease-in forwards;}
-.popup.is-closing ::backdrop {animation: fade-out var(--duration) ease-in forwards;}
+.popup[open] ::backdrop {
+    animation: fade-in var(--duration) ease-out;
+}
+
+.popup.is-closing {
+    animation: pop-out var(--duration) ease-in forwards;
+}
+
+.popup.is-closing ::backdrop {
+    animation: fade-out var(--duration) ease-in forwards;
+}
 
 .popup::backdrop {
     background: rgb(5 6 15/ .45);
@@ -60,16 +68,39 @@ body {
     backdrop-filter: blur(10px);
 }
 
-@keyframes pop-in {from {opacity: 0; scale: .96} }
-@keyframes pop-out {to {opacity: 0; scale: .96} }
-@keyframes fade-in {from {opacity: 0} }
-@keyframes fade-out {to {opacity: 0} }
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        scale: .96
+    }
+}
+
+@keyframes pop-out {
+    to {
+        opacity: 0;
+        scale: .96
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0
+    }
+}
 
 body:has(dialog[open]) {
     overflow: hidden;
 }
 
-.popup-box {max-height: inherit; }
+.popup-box {
+    max-height: inherit;
+}
 
 .popup-media {
     position: relative;
@@ -78,15 +109,15 @@ body:has(dialog[open]) {
     background: rgb(255 255 255 / .06);
 }
 
-.popup-media::before{
-    content:"";
+.popup-media::before {
+    content: "";
     position: absolute;
     inset: -40px;
-    background: var(--poster) center / cover ;
+    background: var(--poster) center / cover;
     filter: blur(30px) saturate(1.5) brightness(.7);
 }
 
-.popup-img{
+.popup-img {
     position: relative;
     display: block;
     width: auto;
@@ -97,7 +128,9 @@ body:has(dialog[open]) {
     bos-shadow: 0 10px 30px rgb(0 0 0 / .5);
 }
 
-.popup-body{padding: 1.25rem 1.5rem 1.5rem; }
+.popup-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+}
 
 .popup-rating {
     display: inline-flex;
@@ -115,8 +148,13 @@ body:has(dialog[open]) {
     background: rgba(255 255 255 / .12);
 }
 
-.popup-rating[hidden] {display: none; }
-.popup-rating:hover {background: rgb(255 255 255 / .25); }
+.popup-rating[hidden] {
+    display: none;
+}
+
+.popup-rating:hover {
+    background: rgb(255 255 255 / .25);
+}
 
 .rating-value::after {
     content: " / 10";
@@ -126,11 +164,17 @@ body:has(dialog[open]) {
     color: var(--glass-dim);
 }
 
-.rating-icon { display: block; hight:1.1rem; width:auto; }
+.rating-icon {
+    display: block;
+    hight: 1.1rem;
+    width: auto;
+}
 
-.icon-missing .rating-icon {display: none; }
+.icon-missing .rating-icon {
+    display: none;
+}
 
-.icon-missing::before{
+.icon-missing::before {
     content: "IMDB";
     padding: .05rem .35rem;
     font-size: .75rem;
@@ -141,9 +185,98 @@ body:has(dialog[open]) {
 }
 
 .popup-text {
-     margin: 0;
-     color: var(--glass-dim);
+    margin: 0;
+    color: var(--glass-dim);
     line-height: 1.5;
- }
+}
 
-.popup-close{display: none;}
+.popup-close {
+    display: none;
+}
+
+:focus-visible {
+    outline: 3px solid #7aa2ff;
+    outline-offset: 2px;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+main > section {
+    min-height: 100dvh;
+    padding: 4rem 1.5rem;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.recommendations {
+    padding-inline: 0;
+}
+
+h2 {
+    text-wrap: balance;
+}
+
+.hero {
+    flex-direction: row;
+    gap: clamp(1.5rem, 6vw, 5rem);
+}
+
+.hero-picture img {
+    display: block;
+    width: min(48vw, 620px);
+    height: auto;
+    max-height: 80dvh;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgb(0 0 0 / .5));
+}
+
+.hero-text h1{
+    margin: 0;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.1;
+}
+
+.hero-text h3{
+    margin: 0.5rem 0;
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    font-weight: 500;
+    color: var(--glass-dim);
+}
+
+.hero-text h2{
+    margin: 0;
+    font-size: clamp(3rem, 9vw, 7rem);
+    line-height: 1;
+    background: linear-gradient(90deg, #a5b4fc, #f9a8d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-picture, .hero-text >* {
+    animation: hero-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-text h1{
+    animation-delay: 0.8s;
+}
+.hero-text h3{
+    animation-delay: 1s;
+}
+.hero-text h2{
+    animation-delay: 1.2s;
+}
+
+@keyframes hero-in {
+    from{
+        opacity: 0;
+        translate:0 1.5rem;
+    }
+}
+
