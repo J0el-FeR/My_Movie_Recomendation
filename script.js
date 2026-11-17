@@ -133,3 +133,8 @@ new ResizeObserver(() => {
 new ResizeObserver(([entry]) => {
     halfWidth = entry.contentRect.width / 2
 }).observe(carouselTrack)
+
+function wrap(value) {
+    const remainder = value % halfWidth
+    return remainder > 0 ? remainder - halfWidth : remainder
+}
