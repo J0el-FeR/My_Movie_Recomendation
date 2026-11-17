@@ -54,3 +54,17 @@ function openMovie(movie) {
 
     popup.showModal()
 }
+
+function createThumb(movie, index) {
+    const img = document.createElement("img")
+    img.src = movie.poster
+    img.alt = `Poster of ${movie.name}`
+    img.loading = "lazy"
+
+    const thumb = document.createElement("button")
+    thumb.className = "thumb"
+    thumb.type = "button"
+    thumb.dataset.index = index
+    thumb.append(img)
+    return thumb
+}
