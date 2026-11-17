@@ -39,3 +39,31 @@ const MOVIE_GRID = [
     "tt0230011",
     "tt37287335",
 ];
+
+const RATING_ICON = "images/imdb.svg";
+ratingIcon.addEventListener("error", () =>
+    popupRating.classList.add("icon-missing"),
+);
+ratingIcon.src = RATING_ICON;
+function openMovie(movie) {
+    const year = movie.releaseInfo ? ` (${movie.releaseInfo})` : "";
+
+    popupImg.src = movie.poster;
+    popupImg.alt = `Poster of ${movie.name}`;
+    popupMedia.style.setProperty(
+        "--poster",
+        `url(${JSON.stringify(movie.poster)})`,
+    );
+    popupTitle.textContent = movie.name + year;
+    popupText.textContent = movie.description ?? "";
+    const imdbId = movie.imdb_id ?? movie.id;
+    const hasRating =
+        Boolean(movie.imdbRating) && String(imdbId).startsWith("tt");
+    popupRating.hidden = !hasRating;
+    if (hasRating) {
+        ratingValue.textContent = movie.imdbRating;
+        popupRating.href = `https://www.imdb.com/title/${imdbId}/`;
+    }
+
+    popup.showModal();
+}
