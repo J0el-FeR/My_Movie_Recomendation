@@ -227,3 +227,11 @@ function nudgeCarousel(direction) {
 
     resumeAt = performance.now() + dragDelay
 }
+
+carousel
+    .querySelector(".carousel-btn-prev")
+    .addEventListener("click", () => nudgeCarousel(1))
+carousel
+    .querySelector(".carousel-btn-next")
+    .addEventListener("click", () => nudgeCarousel(-1))
+carouselTrack.addEventListener("dragstart", (event) => event.preventDefault())
