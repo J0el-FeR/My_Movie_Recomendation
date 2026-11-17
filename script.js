@@ -358,3 +358,45 @@ mobileMenu.addEventListener("click", (event) => {
     if (event.target === mobileMenu || event.target.closest(".nav-link"))
         closeDialog(mobileMenu)
 })
+
+mobileMenu.addEventListener("cancel", (event) => {
+    event.preventDefault()
+    closeDialog(mobileMenu)
+})
+
+const sectionObserver = new IntersectionObserver(
+    (entries) => {
+        for (const entry of entries) {
+            if (!entry.isIntersecting) continue
+
+            sideNavigation.classList.toggle(
+                "is-visible",
+                entry.target.id !== "heroSection",
+            )
+
+            for (const link of navLinks) {
+                const isCurrent = link.getAttribute("href") === `#${entry.target.id}`
+                link.classList.toggle("is-active", isCurrent)
+
+                if (isCurrent) link.setAttribute("aria-current", "location")
+                else link.removeAttribute("aria-current")
+            }
+        }
+    },
+    {rootMargin: "-50% 0px -50% 0px"},
+)
+
+document
+    .querySelectorAll("main > section")
+    .forEach((section) => sectionObserver.observe(section))
+
+loadMovies()
+loadRecommendations()
+popup.addEventListener("click", (event) => {
+    if (event.target === popup) closePopup()
+})
+popup.querySelector(".popup-close").addEventListener("click", closePopup)
+popup.addEventListener("cancel", (event) => {
+    event.preventDefault()
+    closePopup()
+})
