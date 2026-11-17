@@ -347,3 +347,14 @@ async function revealMystery() {
 
 mysteryReveal.addEventListener("click", revealMystery)
 mysteryAnother.addEventListener("click", revealMystery)
+
+document
+    .querySelector("#mobile-menu-button")
+    .addEventListener("click", () => mobileMenu.showModal())
+document
+    .querySelector("#mobile-menu-close")
+    .addEventListener("click", () => closeDialog(mobileMenu))
+mobileMenu.addEventListener("click", (event) => {
+    if (event.target === mobileMenu || event.target.closest(".nav-link"))
+        closeDialog(mobileMenu)
+})
