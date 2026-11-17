@@ -16,6 +16,10 @@ const carouselWindow = carousel.querySelector(".carousel-window")
 const mystery = document.querySelector("#mystery")
 const mysteryReveal = document.querySelector("#mystery-reveal")
 const mysteryAnother = document.querySelector("#mystery-another")
+const mobileMenu = document.querySelector("#mobile-menu")
+const navLinks = document.querySelectorAll(".nav-link")
+const sideNavigation = document.querySelector(".side-navigation")
+
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)")
 const closePopup = () => closeDialog(popup)
 const carouselMinItens = recommendations.length
@@ -340,3 +344,6 @@ async function revealMystery() {
     mystery.classList.add("has-revealed", "is-open")
     setMysteryButtons(false)
 }
+
+mysteryReveal.addEventListener("click", revealMystery)
+mysteryAnother.addEventListener("click", revealMystery)
