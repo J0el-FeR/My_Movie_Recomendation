@@ -165,3 +165,31 @@ function moveCarousel(time) {
     }
     requestAnimationFrame(moveCarousel)
 }
+
+requestAnimationFrame(moveCarousel)
+carouselStage.addEventListener("pointerenter", (event) => {if (event.pointerType === "mouse") mouseOver = true})
+carouselStage.addEventListener("pointerleave", (event) => {if (event.pointerType === "mouse" && !dragging) mouseOver = false})
+
+carouselWindow.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return
+    pressed = true
+    dragMoved = false
+    pendingShift = 0
+    startX = event.clientX
+    startPosition = position
+})
+
+carouselWindow.addEventListener("pointermove", (event) => {
+    if (!pressed) return
+
+    const distance = event.clientX - startX
+    if (!dragging && Math.abs(distance) < 5) return
+
+    if (!dragging) {
+        dragging = true
+        dragMoved = true
+        carouselWindow.setPointerCapture(event.pointerId)
+        carouselWindow.classList.add("is-dragging")
+    }
+    position = startPosition + distance
+})
