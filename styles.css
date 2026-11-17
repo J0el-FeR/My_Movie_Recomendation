@@ -50,15 +50,10 @@ body {
 }
 
 .popup {
-    inset: auto 0 0 0;
-    margin: 0;
-    width: 100%;
-    max-width: 100%;
-    height: 75dvh;
-    max-height: 75dvh;
+    width: min(90vw, 560px);
     padding: 0;
     border: 1px solid var(--glass-edge);
-    border-radius: var(--glass-radius) var(--glass-radius) 0 0;
+    border-radius: var(--glass-radius);
     background: var(--glass-fill);
     color: var(--text);
     overflow: hidden;
@@ -73,7 +68,19 @@ body {
 }
 
 .popup::before {
-    display: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+            radial-gradient(
+                    120% 70% at 8% 0%,
+                    rgb(255 255 255 / 0.22),
+                    transparent 55%
+            ),
+            linear-gradient(to bottom, rgb(255 255 255 / 0.08), transparent 25%);
 }
 
 .popup::backdrop {
@@ -826,22 +833,13 @@ footer p {
     }
 
     .popup {
-        width: min(90vw, 560px);
-        padding: 0;
-        border: 1px solid var(--glass-edge);
-        border-radius: var(--glass-radius);
-        background: var(--glass-fill);
-        color: var(--text);
-        overflow: hidden;
-
-        -webkit-backdrop-filter: blur(28px) saturate(160%) brightness(0.85);
-        backdrop-filter: blur(28px) saturate(160%) brightness(0.85);
-
-        box-shadow:
-                0 24px 60px rgb(0 0 0 / 0.55),
-                inset 0 1px 1px rgb(255 255 255 / 0.35),
-                inset 0 -1px 1px rgb(255 255 255 / 0.08),
-                inset 0 0 24px rgb(255 255 255 / 0.05);
+        inset: auto 0 0 0;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 75dvh;
+        max-height: 75dvh;
+        border-radius: var(--glass-radius) var(--glass-radius) 0 0;
     }
 
     .popup[open] {
@@ -993,19 +991,7 @@ footer p {
     }
 
     .popup::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        pointer-events: none;
-        border-radius: inherit;
-        background:
-                radial-gradient(
-                        120% 70% at 8% 0%,
-                        rgb(255 255 255 / 0.22),
-                        transparent 55%
-                ),
-                linear-gradient(to bottom, rgb(255 255 255 / 0.08), transparent 25%);
+        display: none;
     }
 }
 
