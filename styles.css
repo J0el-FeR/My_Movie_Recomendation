@@ -280,3 +280,122 @@ h2 {
     }
 }
 
+
+.mystery {
+    --mystery-poster:min(75vw, 320px, 36dvh);
+    position: relative;
+    overflow: hidden;
+    padding-block: 2.5rem;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.mystery h2{
+    position: relative;
+    z-index: 3;
+    margin: 0;
+    font-size: clamp(1.75rem, 5vw, 3rem);
+}
+
+.curtains {
+    position: absolute;
+    inset:0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.curtain {
+    position: absolute;
+    top:0;
+    bottom: 0;]
+    width: 50%;
+    background: repeating-linear-gradient(
+    90deg,
+    #5a0f1c 0 28px,
+    #7d1829 28px 56px
+    );
+    box-shadow: inset0 0 60px rgb(0 0 0 / .5);
+    transition: translate 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.curtain.left {
+    left:0;
+}
+.curtain.right {
+    right:0;
+}
+.mystery.open .curtain.left {
+    translate: -100% 0;
+}
+.mystery.open .curtain.right {
+    translate: 100% 0;
+}
+
+.mystery-result {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    gap: 0.75rem;
+    min-height: calc(var(--mystery-poster) + 1.5 + 3rem);
+}
+
+.mystery-result .thumb{
+    width: var(--mystery-poster);
+}
+.mystery-title {
+    margin: 0;
+    font-weight: 600;
+}
+
+.mystery-reveal, .mystery-another{
+    position: relative;
+    z-index: 3;
+    padding: 0.9rem 2rem;
+    font: inherit;
+    font-weight: 600;
+    color:var(--text);
+    border: 1px solid var(--glass-edge);
+    border-radius: 999px;
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: 0 12px 30px rgb(0 0 0 / .4), inset 0 1px 1px rgb(255 255 255 / .35);
+    cursor: pointer;
+    transition:
+    opacity 0.3s,
+    scale 0.2s,
+    background 0.2s;
+}
+
+.mystery-reveal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.mystery-reveal:hover:not(:disabled),
+.mystery-another:hover:not(:disabled) {
+    background: rgb(255 255 255 / 0.24);
+    scale: 1.05;
+}
+
+.mystery-reveal:disabled,
+.mystery-another:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.mystery-another {
+    opacity: 0;
+    pointer-events: none;
+}
+.mystery.has-revealed .mystery-another {
+    opacity: 1;
+    pointer-events: auto;
+}
+.mystery.has-revealed .mystery-reveal {
+    display: none;
+}
