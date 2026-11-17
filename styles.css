@@ -6,15 +6,47 @@
     --duration: .25s;
 
     --glass-fill: linear-gradient(135deg, rgb(255 255 255 / .16), rgb(255 255 255 / .05));
+
     --glass-edge: rgb(255 255 255 / .22);
     --glass-dim: rgb(255 255 255 / .75);
     --glass-radius: 28px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
 body {
-    background-color: var(--bg);
-    color: var(--text);
     margin: 0;
+    min-height: 100dvh;
+    font-family: system-ui, sans-serif;
+    color: var(--text);
+    background:
+            radial-gradient(
+                    60% 50% at 15% 10%,
+                    rgb(99 102 241 / 0.45),
+                    transparent 60%
+            ),
+            radial-gradient(
+                    50% 45% at 85% 20%,
+                    rgb(236 72 153 / 0.35),
+                    transparent 60%
+            ),
+            radial-gradient(
+                    60% 50% at 50% 100%,
+                    rgb(14 165 233 / 0.35),
+                    transparent 60%
+            ),
+            var(--bg);
+    background-attachment: fixed;
 }
 
 .popup {
@@ -166,22 +198,19 @@ body:has(dialog[open]) {
 
 .rating-icon {
     display: block;
-    hight: 1.1rem;
+    height: 1.1rem;
     width: auto;
-}
-
-.icon-missing .rating-icon {
-    display: none;
-}
-
-.icon-missing::before {
-    content: "IMDB";
-    padding: .05rem .35rem;
-    font-size: .75rem;
+    content: "IMDb";
+    padding: 0.05rem 0.35rem;
+    font-size: 0.75rem;
     font-weight: 800;
     color: #000;
     background: #f5c518;
     border-radius: 4px;
+}
+
+.popup-rating .icon-missing .rating-icon {
+    display: none;
 }
 
 .popup-text {
