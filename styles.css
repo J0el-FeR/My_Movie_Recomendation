@@ -351,6 +351,118 @@ h2 {
     cursor: pointer;
 }
 
+.carousel {
+    --carousel-scale: 1.5;
+    width: 100%;
+}
+.carousel[hidden] {
+    display: none;
+}
+
+.carousel-window.is-dragging {
+    cursor: grabbing;
+}
+
+.carousel-stage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem clamp(1.5rem, 6vw, 3rem);
+}
+
+.carousel-stage .carousel-window {
+    flex: 0 0 100%;
+}
+
+.carousel-btn {
+    display: grid;
+    place-items: center;
+    width: clamp(2.75rem, 8vw, 3.5rem);
+    aspect-ratio: 1;
+    padding: 0;
+    border: 1px solid var(--glass-edge);
+    border-radius: 50%;
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    box-shadow:
+            0 8px 24px rgb(0 0 0 / 0.4),
+            inset 0 1px 1px rgb(255 255 255 / 0.35);
+    cursor: pointer;
+    transition:
+            scale 0.2s,
+            background 0.2s;
+}
+
+.carousel-btn::before {
+    content: "";
+    width: 28%;
+    aspect-ratio: 1;
+    border-top: 3px solid var(--text);
+    border-right: 3px solid var(--text);
+}
+
+.carousel-btn-next::before {
+    rotate: 45deg;
+    translate: -10% 0;
+}
+.carousel-btn-prev::before {
+    rotate: -135deg;
+    translate: 10% 0;
+}
+
+@media (hover: hover) {
+    .carousel-btn:hover {
+        background: rgb(255 255 255 / 0.24);
+        scale: 1.08;
+    }
+}
+
+.carousel-btn:active {
+    scale: 0.92;
+}
+
+.carousel-title {
+    margin: 0 0 0.5rem;
+    text-align: center;
+    font-size: clamp(1.75rem, 5vw, 3rem);
+}
+
+.carousel-window {
+    overflow: hidden;
+    touch-action: pan-y;
+    cursor: grab;
+    padding-block: 1.5rem;
+    -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 8%,
+            #000 92%,
+            transparent
+    );
+    mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 8%,
+            #000 92%,
+            transparent
+    );
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    user-select: none;
+}
+
+.carousel .thumb {
+    flex: none;
+
+    width: min(calc(var(--poster-width, 160px) * var(--carousel-scale)), 34dvh);
+    margin-right: 1rem;
+    cursor: inherit;
+}
+
 
 .mystery {
     --mystery-poster: min(75vw, 320px, 36dvh);
