@@ -214,3 +214,16 @@ function endDrag(event) {
         dragMoved = false
     })
 }
+
+carouselWindow.addEventListener("pointerup", endDrag)
+carouselWindow.addEventListener("pointercancel", endDrag)
+
+function nudgeCarousel(direction) {
+    const dragDelay = 2000
+    const shift = direction * carouselWindow.clientWidth * 0.8
+
+    if (reducedMotion.matches) position += shift
+    else pendingShift += shift
+
+    resumeAt = performance.now() + dragDelay
+}
