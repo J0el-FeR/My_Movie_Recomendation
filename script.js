@@ -264,3 +264,11 @@ async function loadMovies() {
     showCollection(movieSearch.value)
     setMysteryButtons(false)
 }
+
+async function loadRecommendations() {
+    carousel.hidden = true
+
+    recommended = await fetchRecommendations()
+
+    if (recommended.length > 0) renderCarousel()
+}
