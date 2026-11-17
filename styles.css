@@ -448,3 +448,58 @@ footer p {
     margin: 0;
     color: var(--glass-dim);
 }
+
+.side-navigation {
+    position: fixed;
+    top: 50%;
+    left: clamp(0.75rem, 2vw, 1.75rem);
+    translate: -1.5rem -50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    border: 1px solid var(--glass-edge);
+    border-radius: var(--glass-radius);
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+    box-shadow:
+            0 16px 40px rgb(0 0 0 / 0.45),
+            inset 0 1px 1px rgb(255 255 255 / 0.35),
+            inset 0 -1px 1px rgb(255 255 255 / 0.08);
+    transition:
+            opacity 0.4s,
+            translate 0.4s;
+}
+
+.side-navigation.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    translate: 0 -50%;
+}
+
+.nav-link {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--glass-dim);
+    border-radius: 999px;
+    transition:
+            background 0.2s,
+            color 0.2s;
+}
+
+.nav-link:hover {
+    background: rgb(255 255 255 / 0.12);
+    color: var(--text);
+}
+
+.nav-link.is-active {
+    color: var(--text);
+    background: rgb(255 255 255 / 0.22);
+    box-shadow: inset 0 1px 1px rgb(255 255 255 / 0.4);
+}
