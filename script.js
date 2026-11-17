@@ -138,3 +138,30 @@ function wrap(value) {
     const remainder = value % halfWidth
     return remainder > 0 ? remainder - halfWidth : remainder
 }
+
+function moveCarousel(time) {
+    const seconds = Math.min((time - lastTime) / 1000, 0.1)
+    lastTime = time
+
+    const autoMoving =
+        !pressed &&
+        !mouseOver &&
+        !popup.open &&
+        !reducedMotion.matches &&
+        time >= resumeAt
+    if (autoMoving) position += 55 * seconds
+    if (Math.abs(pendingShift) > 0.5) {
+        const part = pendingShift * Math.min(1, seconds * 8)
+        position += part
+        pendingShift -= part
+    } else {
+        position += pendingShift
+        pendingShift = 0
+    }
+
+    if (halfWidth > 0) {
+        position = wrap(position)
+        carouselTrack.style.translate = `${position}px 0`
+    }
+    requestAnimationFrame(moveCarousel)
+}
