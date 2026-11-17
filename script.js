@@ -68,3 +68,35 @@ function createThumb(movie, index) {
     thumb.append(img)
     return thumb
 }
+
+function statusMessage(text, withRetry = false) {
+    const message = document.createElement("p")
+    message.className = "status"
+    message.textContent = text
+
+    if (withRetry) {
+        const retry = document.createElement("button")
+        retry.type = "button"
+        retry.textContent = "Try again"
+        retry.addEventListener("click", loadMovies)
+        message.append(retry)
+    }
+    return message
+}
+
+function closeDialog(dialog) {
+    if (!dialog.open || dialog.classList.contains("is-closing")) return
+
+    const finish = () => {
+        dialog.classList.remove("is-closing")
+        dialog.close()
+    }
+
+    dialog.classList.add("is-closing")
+
+    if (getComputedStyle(dialog).animationName === "none") {
+        finish()
+    } else {
+        dialog.addEventListener("animationend", finish, {once: true})
+    }
+}
