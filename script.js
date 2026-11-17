@@ -288,3 +288,14 @@ function openOnClick(container, getMovies) {
         if (thumb) openMovie(getMovies()[thumb.dataset.index])
     })
 }
+
+openOnClick(movieGrid, () => movies)
+openOnClick(carouselTrack, () => recommended)
+openOnClick(document.querySelector("#mystery-result"), () => movies)
+
+movieSearch.addEventListener("input", () => showCollection(movieSearch.value))
+
+function setMysteryButtons(disabled) {
+    mysteryReveal.disabled = disabled
+    mysteryAnother.disabled = disabled
+}
