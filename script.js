@@ -100,3 +100,22 @@ function closeDialog(dialog) {
         dialog.addEventListener("animationend", finish, {once: true})
     }
 }
+
+function renderCarousel() {
+    const indexes = recommended.map((_, i) => i)
+
+    while (indexes.length < carouselMinItens) {
+        indexes.push(...indexes.slice(0, carouselMinItens - indexes.length))
+    }
+
+    const items = indexes.map((i) => createThumb(recommended[i], i))
+    const copy = indexes.map((i) => {
+        const thumb = createThumb(recommended[i], i)
+        thumb.tabIndex = -1
+        thumb.setAttribute("aria-hidden", "true")
+        return thumb
+    })
+
+    carouselTrack.replaceChildren(...items, ...copy)
+    carousel.hidden = false
+}
