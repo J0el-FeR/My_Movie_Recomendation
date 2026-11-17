@@ -193,3 +193,24 @@ carouselWindow.addEventListener("pointermove", (event) => {
     }
     position = startPosition + distance
 })
+
+function endDrag(event) {
+    const dragDelay = 2000
+    if (!pressed) return
+    pressed = false
+
+    if (dragging) {
+        dragging = false
+        carouselWindow.classList.remove("is-dragging")
+
+        if (event.pointerType === "mouse") {
+            mouseOver = carouselStage.matches(":hover")
+        } else {
+            resumeAt = performance.now() + dragDelay
+        }
+    }
+
+    setTimeout(() => {
+        dragMoved = false
+    })
+}
