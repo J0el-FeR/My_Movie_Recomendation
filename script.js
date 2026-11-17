@@ -235,3 +235,15 @@ carousel
     .querySelector(".carousel-btn-next")
     .addEventListener("click", () => nudgeCarousel(-1))
 carouselTrack.addEventListener("dragstart", (event) => event.preventDefault())
+
+function showCollection(term = "") {
+    const search = term.trim().toLowerCase()
+    const list = search
+        ? movies.filter((movie) => movie.name.toLowerCase().includes(search))
+        : movies
+
+    movieGrid.replaceChildren(
+        ...list.map((movie) => createThumb(movie, movies.indexOf(movie))),
+    )
+    document.querySelector("#no-results").hidden = list.length > 0
+}
