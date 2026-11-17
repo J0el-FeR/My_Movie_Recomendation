@@ -312,3 +312,16 @@ function pickRandomMovie() {
     lastRandom = movie
     return movie
 }
+
+function showMysteryMovie(movie) {
+    const year = movie.releaseInfo ? ` (${movie.releaseInfo})` : ""
+
+    const title = document.createElement("p")
+    title.className = "mystery-title"
+    title.textContent = movie.name + year
+
+    document.querySelector("#mystery-result").replaceChildren(
+        createThumb(movie, movies.indexOf(movie)),
+        title,
+    )
+}
