@@ -68,14 +68,32 @@ body {
 }
 
 .popup::backdrop {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    pointer-events: none;
-    border-radius: inherit;
-    background: radial-gradient(120% 70% at 8% 0%, rgb(255 255 255 / .22), transparent 55%),
-    linear-gradient(to bottom, rgb(255 255 255 / .08), transparent 25%);
+    background: rgb(5 6 15 / 0.45);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        scale: 0.96;
+    }
+}
+@keyframes pop-out {
+    to {
+        opacity: 0;
+        scale: 0.96;
+    }
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
 }
 
 .popup[open] {
@@ -138,7 +156,7 @@ body:has(dialog[open]) {
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--glass-edge);
-    background: rgb(255 255 255 / .06);
+    background: rgb(255 255 255 / 0.06);
 }
 
 .popup-media::before {
@@ -146,7 +164,7 @@ body:has(dialog[open]) {
     position: absolute;
     inset: -40px;
     background: var(--poster) center / cover;
-    filter: blur(30px) saturate(1.5) brightness(.7);
+    filter: blur(30px) saturate(1.5) brightness(0.7);
 }
 
 .popup-img {
@@ -157,7 +175,20 @@ body:has(dialog[open]) {
     max-height: 50vh;
     margin: 1.25rem auto;
     border-radius: 10px;
-    bos-shadow: 0 10px 30px rgb(0 0 0 / .5);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.5);
+}
+
+.popup-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.popup-title {
+    margin: 0;
+    font-size: 1.25rem;
 }
 
 .popup-body {
@@ -167,17 +198,17 @@ body:has(dialog[open]) {
 .popup-rating {
     display: inline-flex;
     align-items: center;
-    gap: 4rem;
+    gap: 0.4rem;
     color: inherit;
     text-decoration: none;
     cursor: pointer;
-    transition: background .2s;
-    padding: .2rem .65rem .2rem .4rem;
-    font-size: .95rem;
+    transition: background 0.2s;
+    padding: 0.2rem 0.65rem 0.2rem 0.4rem;
+    font-size: 0.95rem;
     font-weight: 600;
     border: 1px solid var(--glass-edge);
     border-radius: 999px;
-    background: rgba(255 255 255 / .12);
+    background: rgb(255 255 255 / 0.12);
 }
 
 .popup-rating[hidden] {
@@ -185,13 +216,13 @@ body:has(dialog[open]) {
 }
 
 .popup-rating:hover {
-    background: rgb(255 255 255 / .25);
+    background: rgb(255 255 255 / 0.25);
 }
 
 .rating-value::after {
-    content: " / 10";
-    margin-left: .15rem;
-    font-size: .8em;
+    content: "/10";
+    margin-left: 0.15rem;
+    font-size: 0.8em;
     font-weight: 400;
     color: var(--glass-dim);
 }
@@ -457,7 +488,6 @@ h2 {
 
 .carousel .thumb {
     flex: none;
-
     width: min(calc(var(--poster-width, 160px) * var(--carousel-scale)), 34dvh);
     margin-right: 1rem;
     cursor: inherit;
@@ -785,13 +815,22 @@ footer p {
     }
 
     .popup {
-        inset: auto 0 0 0;
-        margin: 0;
-        width: 100%;
-        max-width: 100%;
-        height: 75dvh;
-        max-height: 75dvh;
-        border-radius: var(--glass-radius) var(--glass-radius) 0 0;
+        width: min(90vw, 560px);
+        padding: 0;
+        border: 1px solid var(--glass-edge);
+        border-radius: var(--glass-radius);
+        background: var(--glass-fill);
+        color: var(--text);
+        overflow: hidden;
+
+        -webkit-backdrop-filter: blur(28px) saturate(160%) brightness(0.85);
+        backdrop-filter: blur(28px) saturate(160%) brightness(0.85);
+
+        box-shadow:
+                0 24px 60px rgb(0 0 0 / 0.55),
+                inset 0 1px 1px rgb(255 255 255 / 0.35),
+                inset 0 -1px 1px rgb(255 255 255 / 0.08),
+                inset 0 0 24px rgb(255 255 255 / 0.05);
     }
 
     .popup[open] {
@@ -941,7 +980,19 @@ footer p {
     }
 
     .popup::before {
-        display: none;
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        border-radius: inherit;
+        background:
+                radial-gradient(
+                        120% 70% at 8% 0%,
+                        rgb(255 255 255 / 0.22),
+                        transparent 55%
+                ),
+                linear-gradient(to bottom, rgb(255 255 255 / 0.08), transparent 25%);
     }
 }
 
