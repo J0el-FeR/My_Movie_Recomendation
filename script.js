@@ -119,3 +119,17 @@ function renderCarousel() {
     carouselTrack.replaceChildren(...items, ...copy)
     carousel.hidden = false
 }
+
+new ResizeObserver(() => {
+    const listPoster = movieGrid.querySelector(".thumb")
+    if (listPoster) {
+        carousel.style.setProperty(
+            "--poster-width",
+            `${listPoster.getBoundingClientRect().width}px`,
+        )
+    }
+}).observe(movieGrid)
+
+new ResizeObserver(([entry]) => {
+    halfWidth = entry.contentRect.width / 2
+}).observe(carouselTrack)
