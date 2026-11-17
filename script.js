@@ -299,3 +299,16 @@ function setMysteryButtons(disabled) {
     mysteryReveal.disabled = disabled
     mysteryAnother.disabled = disabled
 }
+
+function pickRandomMovie() {
+    let mysteryMovies = movieList.length
+    const watched = movies.slice(0, mysteryMovies)
+
+    let movie
+    do {
+        movie = watched[Math.floor(Math.random() * watched.length)]
+    } while (watched.length > 1 && movie === lastRandom)
+
+    lastRandom = movie
+    return movie
+}
