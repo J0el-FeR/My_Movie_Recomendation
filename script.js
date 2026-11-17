@@ -325,3 +325,18 @@ function showMysteryMovie(movie) {
         title,
     )
 }
+
+async function revealMystery() {
+    const CURTAIN_TIME = 800
+    if (movies.length === 0) return
+    setMysteryButtons(true)
+
+    if (mystery.classList.contains("is-open")) {
+        mystery.classList.remove("is-open")
+        await wait(CURTAIN_TIME)
+    }
+
+    showMysteryMovie(pickRandomMovie())
+    mystery.classList.add("has-revealed", "is-open")
+    setMysteryButtons(false)
+}
