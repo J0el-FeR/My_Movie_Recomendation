@@ -13,7 +13,6 @@
     <a href="#recommendations" class="nav-link">Recommendations</a>
     <a href="#mystery" class="nav-link">Mystery</a>
     <a href="#collection" class="nav-link">Collection</a>
-    <a href="#footer" class="nav-link">End</a>
 </nav>
 
 <button
@@ -30,57 +29,57 @@
 </button>
 
 <dialog class="mobile-menu" id="mobile-menu">
-
     <button
             class="mobile-menu-close"
             id="mobile-menu-close"
             type="button"
             aria-label="Close Navegation Menu"
     >
-
         &times;
     </button>
 
     <nav aria-label="Mobile navigation">
-
         <a href="#heroSection" class="nav-link">Introduction</a>
         <a href="#recommendations" class="nav-link">Recommendations</a>
         <a href="#mystery" class="nav-link">Mystery</a>
         <a href="#collection" class="nav-link">Collection</a>
-        <a href="#footer" class="nav-link">End</a>
-
     </nav>
 </dialog>
 
 <main>
-
     <section class="hero" id="heroSection">
-
         <div class="hero-picture">
             <picture>
-                <source media="(max-width: 768px)" srcset="Files/Picture-mobile.webp">
-                <img src="Files/Picture.webp" alt="My Picture">
+                <source
+                        media="(max-width: 768px)"
+                        srcset="Files/Picture.webp"
+                />
+                <img src="Files/Picture.webp" alt="My Picture"/>
             </picture>
         </div>
 
         <div class="hero-text">
-            <h1>My Name</h1>
-            <p>And this is one of my Hobby`s</p>
+            <h1>Hi am Joel</h1>
+            <h3>And this is one of my Hobby`s</h3>
             <h2>Movies!</h2>
         </div>
-
     </section>
 
     <section class="recommendations" id="recommendations">
-
-        <section class="carousel" id="carousel" aria-label="Movie Recommendations" hidden>
+        <section
+                class="carousel"
+                id="carousel"
+                aria-label="Movie Recommendations"
+                hidden
+        >
             <h2 class="carousel-title">My Movie Recommendations</h2>
             <div class="carousel-stage">
                 <div class="carousel-window">
                     <div class="carousel-track" id="carousel-track"></div>
                 </div>
 
-                <button class="carousel-btn carousel-btn-prev"
+                <button
+                        class="carousel-btn carousel-btn-prev"
                         type="button"
                         aria-label="Previous posters"
                 ></button>
@@ -100,26 +99,27 @@
             <div class="curtain curtain-right"></div>
         </div>
         <button class="mystery-reveal" id="mystery-reveal" type="button">
-            Find something new!
+            Surprise Me!
         </button>
         <div class="mystery-result" id="mystery-result"></div>
         <button class="mystery-another" id="mystery-another" type="button">
-            Try again!
+            Another One!
         </button>
     </section>
 
     <section class="collection" id="collection">
         <h2>My Watched Movies</h2>
+
         <div class="collection-search">
             <input
                     type="search"
                     id="movie-search"
                     placeholder="Find something you like"
                     aria-label="Search watched movies"
-            >
+            />
         </div>
-        <div class="movie-grid" id="movie-grid">
-        </div>
+
+        <div class="movie-grid" id="movie-grid"></div>
         <p class="no-results" id="no-results" hidden>No movies found.</p>
     </section>
 </main>
@@ -128,12 +128,18 @@
     <button class="popup-close" type="button"></button>
     <div class="popup-box">
         <div class="popup-media">
-            <img class="popup-img" alt="Movie Poster">
+            <img class="popup-img" alt="Movie Poster"/>
         </div>
         <div class="popup-body">
             <div class="popup-heading">
                 <h2 class="popup-title" id="popup-title"></h2>
-                <a class="popup-rating" target="_blank" rel="noopener noreferrer" title="Open on IMDb" hidden>
+                <a
+                        class="popup-rating"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Open on IMDb"
+                        hidden
+                >
                     <span class="rating-icon">IMDb</span>
                     <span class="rating-value"></span>
                 </a>
