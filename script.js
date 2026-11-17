@@ -247,3 +247,20 @@ function showCollection(term = "") {
     )
     document.querySelector("#no-results").hidden = list.length > 0
 }
+
+async function loadMovies() {
+    setMysteryButtons(true)
+    document.querySelector("#no-results").hidden = true
+    movieGrid.replaceChildren(statusMessage("Loading moviesâ€¦"))
+
+    movies = await fetchGridMovies()
+
+    if (movies.length === 0) {
+        console.error("Cinemeta request failed: no grid movies were loaded")
+        movieGrid.replaceChildren(statusMessage("Couldnâ€™t load the movies.", true))
+        return
+    }
+
+    showCollection(movieSearch.value)
+    setMysteryButtons(false)
+}
