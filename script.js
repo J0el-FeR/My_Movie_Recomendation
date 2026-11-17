@@ -13,6 +13,13 @@ const carousel = document.querySelector("#carousel")
 const carouselTrack = document.querySelector("#carousel-track")
 const carouselStage = carousel.querySelector(".carousel-stage")
 const carouselWindow = carousel.querySelector(".carousel-window")
+const mystery = document.querySelector("#mystery")
+const mysteryReveal = document.querySelector("#mystery-reveal")
+const mysteryAnother = document.querySelector("#mystery-another")
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)")
+const closePopup = () => closeDialog(popup)
+const carouselMinItens = recommendations.length
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 let position = 0
 let halfWidth = 0
@@ -271,4 +278,13 @@ async function loadRecommendations() {
     recommended = await fetchRecommendations()
 
     if (recommended.length > 0) renderCarousel()
+}
+
+function openOnClick(container, getMovies) {
+    container.addEventListener("click", (event) => {
+        if (dragMoved) return
+
+        const thumb = event.target.closest(".thumb")
+        if (thumb) openMovie(getMovies()[thumb.dataset.index])
+    })
 }
