@@ -399,3 +399,52 @@ h2 {
 .mystery.has-revealed .mystery-reveal {
     display: none;
 }
+
+.collection h2 {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.75rem, 5vw, 3rem);
+}
+
+.collection-search {
+    width: min(100%, 420px);
+    margin-bottom: 1.5rem;
+}
+
+.collection-search input {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    font: inherit;
+    color: var(--text);
+    border: 1px solid var(--glass-edge);
+    border-radius: 999px;
+    background: var(--glass-fill);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+}
+
+.collection-search input::placeholder {
+    color: var(--muted);
+}
+.movie-grid {
+    width: 100%;
+}
+.no-results {
+    color: var(--muted);
+}
+
+footer {
+    padding: 1.5rem;
+    text-align: center;
+    scroll-snap-align: end;
+    border-top: 1px solid var(--glass-edge);
+    background: rgb(255 255 255 / 0.05);
+}
+
+footer h2 {
+    margin: 0.25rem 0 0;
+    font-size: 1.25rem;
+}
+footer p {
+    margin: 0;
+    color: var(--glass-dim);
+}
