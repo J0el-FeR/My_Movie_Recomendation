@@ -28,3 +28,29 @@ let lastTime = 0
 let movies = []
 let recommended = []
 let lastRandom = null
+
+
+function openMovie(movie) {
+    const year = movie.releaseInfo ? ` (${movie.releaseInfo})` : ""
+    const popupImg = popup.querySelector(".popup-img")
+    const ratingValue = popup.querySelector(".rating-value")
+
+    popupImg.src = movie.poster
+    popupImg.alt = `Poster of ${movie.name}`
+    popup.querySelector(".popup-media").style.setProperty(
+        "--poster",
+        `url(${JSON.stringify(movie.poster)})`,
+    )
+    popup.querySelector(".popup-title").textContent = movie.name + year
+    popup.querySelector(".popup-text").textContent = movie.description ?? ""
+    const imdbId = movie.imdb_id ?? movie.id
+    const hasRating =
+        Boolean(movie.imdbRating) && String(imdbId).startsWith("tt")
+    popup.querySelector(".popup-rating").hidden = !hasRating
+    if (hasRating) {
+        ratingValue.textContent = movie.imdbRating
+        popup.querySelector(".popup-rating").href = `https://www.imdb.com/title/${imdbId}/`
+    }
+
+    popup.showModal()
+}
